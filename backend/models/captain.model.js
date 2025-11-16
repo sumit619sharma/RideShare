@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 const captainSchema = new mongoose.Schema({
     fullname: {
@@ -85,5 +85,6 @@ captainSchema.statics.hashPassword = async function (password) {
     return await bcrypt.hash(password, 10);
 }
 
-export default captainModel = mongoose.model('captain', captainSchema)
+const captainModel = mongoose.model('captain', captainSchema)
 
+export default captainModel;

@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import userRouter from './routes/user.routes.js';
+import captainRouter from './routes/captain.routes.js';
 
 
 const app = express();
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/user', userRouter);
+app.use('/captain', captainRouter);
 
 
 export default app;
