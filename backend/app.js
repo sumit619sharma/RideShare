@@ -21,8 +21,8 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/user', userRouter);
-app.use('/captain', captainRouter);
+app.use('/users', userRouter);
+app.use('/captains', captainRouter);
 
 
 export default app;
