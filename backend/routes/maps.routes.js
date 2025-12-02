@@ -22,7 +22,7 @@ router.get(
 
 router.get(
   "/get-suggestions",
-  query("input").isString().isLength({ min: 3 }),
+  query("input").isString().isLength({ min: 1 }),
   authMiddleware.authUser,
   mapController.getAutoCompleteSuggestions
 );

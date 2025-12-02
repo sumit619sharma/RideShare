@@ -29,6 +29,8 @@ export const createRide = async (req, res) => {
       2
     );
 
+    console.log("Captains in radius:", captainsInRadius);
+
     ride.otp = "";
 
     const rideWithUser = await Ride.findOne({ _id: ride._id }).populate("user");
