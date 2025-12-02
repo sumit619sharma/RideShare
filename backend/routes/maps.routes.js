@@ -1,6 +1,6 @@
 import express from "express";
 import * as authMiddleware from "../middlewares/auth.middleware.js";
-import * as mapController from "../controllers/map.controller.js";
+import * as mapController from "../controllers/maps.controller.js";
 import { query } from "express-validator";
 
 const router = express.Router();

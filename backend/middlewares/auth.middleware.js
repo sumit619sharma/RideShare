@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import captainModel from "../models/captain.model.js";
 import blackListTokenModel from "../models/blackListToken.model.js";
-console.log("auth middleware loaded");
+
 
 export const authUser = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
