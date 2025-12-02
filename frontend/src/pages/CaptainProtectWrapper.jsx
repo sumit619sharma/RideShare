@@ -28,8 +28,6 @@ const CaptainProtectWrapper = ({
             if (response.status === 200) {
                 setCaptain(response.data.captain)
                 setIsLoading(false)
-            } else {
-              throw new Error('Unauthorized')
             }
         })
             .catch(err => {
