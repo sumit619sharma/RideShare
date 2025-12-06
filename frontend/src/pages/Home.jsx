@@ -138,7 +138,7 @@ const Home = () => {
             })
         } else {
             gsap.to(confirmRidePanelRef.current, {
-                transform: 'translateY(100%)'
+                transform: 'translateY(120%)'
             })
         }
     }, [ confirmRidePanel ])
@@ -150,7 +150,7 @@ const Home = () => {
             })
         } else {
             gsap.to(vehicleFoundRef.current, {
-                transform: 'translateY(100%)'
+                transform: 'translateY(120%)'
             })
         }
     }, [ vehicleFound ])
@@ -162,7 +162,7 @@ const Home = () => {
             })
         } else {
             gsap.to(waitingForDriverRef.current, {
-                transform: 'translateY(100%)'
+                transform: 'translateY(120%)'
             })
         }
     }, [ waitingForDriver ])
@@ -262,7 +262,7 @@ const Home = () => {
                     selectVehicle={setVehicleType}
                     fare={fare} setConfirmRidePanel={setConfirmRidePanel} setVehiclePanel={setVehiclePanel} />
             </div>
-            <div ref={confirmRidePanelRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12'>
+            <div ref={confirmRidePanelRef} className='fixed w-full z-10 bottom-0 translate-y-[120%] bg-white px-3 py-6 pt-12'>
                 <ConfirmRide
                     createRide={createRide}
                     pickup={pickup}
@@ -272,7 +272,7 @@ const Home = () => {
 
                     setConfirmRidePanel={setConfirmRidePanel} setVehicleFound={setVehicleFound} />
             </div>
-            <div ref={vehicleFoundRef} className='fixed w-full z-10 bottom-0 translate-y-full  bg-white px-3 py-6 pt-12'>
+            <div ref={vehicleFoundRef} className='fixed w-full z-10 bottom-0 translate-y-[120%]  bg-white px-3 py-6 pt-12'>
                 <LookingForDriver
                     createRide={createRide}
                     pickup={pickup}
@@ -281,7 +281,7 @@ const Home = () => {
                     vehicleType={vehicleType}
                     setVehicleFound={setVehicleFound} />
             </div>
-            <div ref={waitingForDriverRef} className='fixed w-full  z-10 bottom-0 translate-y-full  bg-white px-3 py-6 pt-12'>
+            <div ref={waitingForDriverRef} className='fixed w-full  z-10 bottom-0 translate-y-[120%]  bg-white px-3 py-6 pt-12'>
                 <WaitingForDriver
                     ride={ride}
                     setVehicleFound={setVehicleFound}
