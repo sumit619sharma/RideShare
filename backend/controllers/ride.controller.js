@@ -3,6 +3,7 @@ import { validationResult } from "express-validator";
 import * as mapService from "../services/maps.service.js";
 import { sendMessageToSocketId } from "../socket.js";
 import Ride from "../models/ride.model.js";
+import * as captainService from "../services/captain.service.js";
 
 export const createRide = async (req, res) => {
   const errors = validationResult(req);
@@ -128,12 +129,17 @@ export const endRide = async (req, res) => {
   try {
     const ride = await rideService.endRide({ rideId, captain: req.captain });
 
+   const captain =  await captainService.updateCaptainAfterRide(ride);
+
     sendMessageToSocketId(ride.user.socketId, {
       event: "ride-ended",
       data: ride,
     });
 
-    return res.status(200).json(ride);
+    
+
+
+    return res.status(200).json({ ride, captain });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }

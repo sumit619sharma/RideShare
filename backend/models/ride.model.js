@@ -48,11 +48,22 @@ const rideSchema = new mongoose.Schema(
       select: false,
       required: true,
     },
-    rating: {
+    driverRating: {
       type: Number,
       min: 1,
       max: 5,
     },
+    userRating: {
+      type: Number,
+      min: 1,
+      max: 5,
+    },
+    duration: {
+      type: Number,
+    }, // in minutes
+    distance: {
+      type: Number,
+    }, // in kilometers
   },
   { timestamps: true }
 );

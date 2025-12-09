@@ -1,14 +1,17 @@
-import React from 'react'
+import React , {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import { useCaptain } from '../context/CapatainContext'
 
 const FinishRide = (props) => {
 
     const navigate = useNavigate()
+    const {setCaptain} = useCaptain();
 
     async function endRide() {
+        try {
+            
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/end-ride`, {
 
             rideId: props.ride._id
@@ -20,8 +23,17 @@ const FinishRide = (props) => {
             }
         })
 
-        if (response.status === 200) {
-            navigate('/captain-home')
+        if (response.status !== 200) {
+                throw new Error('Failed to finish ride');
+        }
+
+        const {captain} = await response.data;
+        setCaptain(captain);
+
+        navigate('/captain-home')
+        
+        } catch (error) {
+            console.error('Error finishing ride:', error);
         }
 
     }

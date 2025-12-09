@@ -34,6 +34,8 @@ const Home = () => {
     const [ fare, setFare ] = useState({})
     const [ vehicleType, setVehicleType ] = useState(null)
     const [ ride, setRide ] = useState(null)
+    const [distance, setDistance] = useState(null);
+    const [duration, setDuration] = useState(null);
 
     const navigate = useNavigate()
 
@@ -179,8 +181,11 @@ const Home = () => {
             }
         })
 
+            console.log("Fare response data:", response.data);
 
-        setFare(response.data)
+        setFare(response.data.fare)
+        setDistance(response.data.distance);
+        setDuration(response.data.duration);
 
 
     }
@@ -260,7 +265,11 @@ const Home = () => {
             <div ref={vehiclePanelRef} className='fixed w-full z-10 bottom-0 -translate-y-full bg-white px-3 py-10 pt-12'>
                 <VehiclePanel
                     selectVehicle={setVehicleType}
-                    fare={fare} setConfirmRidePanel={setConfirmRidePanel} setVehiclePanel={setVehiclePanel} />
+                    fare={fare} setConfirmRidePanel={setConfirmRidePanel}
+                     setVehiclePanel={setVehiclePanel}
+                     distance={distance}
+                     duration={duration}
+                     />
             </div>
             <div ref={confirmRidePanelRef} className='fixed w-full z-10 bottom-0 translate-y-[120%] bg-white px-3 py-6 pt-12'>
                 <ConfirmRide

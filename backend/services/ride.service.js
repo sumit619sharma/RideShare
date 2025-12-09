@@ -46,8 +46,14 @@ export async function getFare(pickup, destination) {
     ),
   };
 
-  return fare;
+
+  return {  fare, 
+      distance: (distanceTime.distance.value / 1000).toFixed(2),
+       duration: (distanceTime.duration.value / 60).toFixed(2)};
 }
+
+
+
 
 function getOtp(num) {
   function generateOtp(num) {
@@ -64,7 +70,7 @@ export async function createRide({ user, pickup, destination, vehicleType }) {
     throw new Error("All fields are required");
   }
 
-  const fare = await getFare(pickup, destination);
+  const {fare, distance, duration} = await getFare(pickup, destination);
 
   const ride = Ride.create({
     user,
@@ -72,6 +78,8 @@ export async function createRide({ user, pickup, destination, vehicleType }) {
     destination,
     otp: getOtp(6),
     fare: fare[vehicleType],
+    distance,
+    duration,
   });
 
   return ride;
